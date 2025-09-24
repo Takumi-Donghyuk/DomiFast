@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DomiFast - Login</title>
+  <link rel="stylesheet" href="../Publico/CSS/Estilos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="login-body">
+  <div class="login-container">
+    <div class="login-card">
+      <h2>Bienvenido a <span>DomiFast</span></h2>
+      <form action="/login" method="post">
+        <div class="input-group">
+          <input type="email" name="correo" placeholder=" " required>
+          <label>Email</label>
+        </div>
+        <div class="input-group">
+          <input type="password" name="contrasena" placeholder=" " required>
+          <label>Contraseña</label>
+        </div>
+        <button type="submit" class="btn-primary">Iniciar sesión</button>
+        <p class="register-link">¿No tiene cuenta? <a href="/register">Regístrese</a></p>
+      </form>
+
+      <!-- Botón de volver al inicio -->
+      <a href="/" class="btn-secondary">Volver al inicio</a>
+    </div>
+  </div>
+ <% if (typeof error !== 'undefined') { %>
+  <div style="
+    background-color: #f8d7da; 
+    color: #721c24; 
+    padding: 10px; 
+    border-radius: 5px; 
+    margin-bottom: 15px;
+    border: 1px solid #f5c6cb;
+    font-weight: bold;
+  ">
+    <%= error %>
+  </div>
+<% } %>
+  <script src="../Publico/JS/Script.js"></script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DomiFast - Panel Administrador</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Montserrat', sans-serif;
+    }
+    body {
+      display: flex;
+      height: 100vh;
+      background-color: #f4f6f8;
+    }
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background: linear-gradient(180deg, #1e3c72, #2a5298);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+    .sidebar h2 {
+      font-weight: 600;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .menu {
+      list-style: none;
+    }
+    .menu li {
+      margin-bottom: 15px;
+    }
+    .menu a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      display: block;
+      padding: 10px;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+    .menu a:hover {
+      background: #ff6f3c; /* naranja */
+    }
+    /* Contenido */
+    .content {
+      flex: 1;
+      padding: 30px;
+    }
+    .content h1 {
+      color: #1e3c72;
+      margin-bottom: 20px;
+    }
+    .section {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .section h2 {
+      color: #ff6f3c;
+      margin-bottom: 10px;
+    }
+    .btn-logout {
+  display: block;
+  background: #dc3545;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.btn-logout:hover {
+  background: #b52b3a;
+}
+
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>DomiFast</h2>
+    <a href="/login/logout" class="btn-logout">Cerrar Sesión</a>
+    <ul class="menu">
+      <li><a href="/admin/usuarios">Gestión de Usuarios</a></li>
+      <li><a href="/admin/zonas">Gestión de Zonas de Cobertura</a></li>
+      <li><a href="/admin/pedidos">Gestión de Pedidos</a></li>
+      <li><a href="/admin/pagos">Pagos y Facturación</a></li>
+      <li><a href="/admin/reportes">Reportes / Estadísticas</a></li>
+    </ul>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="content">
+    <h1>Panel de Administración</h1>
+
+    <div class="section">
+      <h2>Gestión de Usuarios</h2>
+      <p>Registrar nuevos repartidores, gestionar clientes y repartidores, definir roles y controlar accesos</p>
+    </div>
+
+    <div class="section">
+      <h2>Gestión de Zonas de Cobertura</h2>
+      <p>Definir, editar o eliminar zonas geográficas. Validar direcciones dentro de zonas activas</p>
+    </div>
+
+    <div class="section">
+      <h2>Gestión de Pedidos</h2>
+      <p>Consultar pedidos, supervisar y reasignar repartidores. Ver estado y reportes generales</p>
+    </div>
+
+    <div class="section">
+      <h2>Pagos y Facturación</h2>
+      <p>Consultar reportes de pagos: efectivo, tarjeta y online</p>
+    </div>
+
+    <div class="section">
+      <h2>Reportes / Estadísticas</h2>
+      <p>Ver estadísticas de pedidos, entregas y repartidores</p>
+    </div>
+  </div>
+</body>
+</html>
