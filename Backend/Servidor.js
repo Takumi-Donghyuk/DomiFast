@@ -13,6 +13,8 @@ const rutasAutenticacion = require('../Backend/Rutas/rutaAutenticacion');
 const rutasAdministrador = require('./Rutas/rutaAdministrador');
 const rutasCliente = require('./Rutas/rutaCliente');
 const rutasRepartidor = require('./Rutas/rutaRepartidor');
+const rutasProductos = require('./Rutas/rutaProducto');
+
 // Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -64,6 +66,7 @@ app.use('/login', rutasAutenticacion);
 app.use('/admin', authMiddleware, authRol(1), rutasAdministrador);
 app.use('/cliente', authMiddleware, authRol(2), rutasCliente);
 app.use('/repartidor', authMiddleware, authRol(3), rutasRepartidor);
+app.use('/catalogo', authMiddleware, authRol(2), rutasProductos)
 // Levantamiento del servidor
 app.listen(PORT, ()=>{
     console.log(`Servidor escuchando http://localhost:${PORT}`);

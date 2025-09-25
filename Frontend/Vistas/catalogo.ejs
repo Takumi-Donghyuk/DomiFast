@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Catálogo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/Publico/CSS/Catalogo.css">
+</head>
+<body>
+  <h1>Catálogo de Productos</h1>
+
+  <div class="volver-menu">
+    <a href="/cliente/" class="btn-volver">← Volver al Menú Principal</a>
+  </div>
+
+  <div class="carrito-actions">
+    <button id="ver-carrito" class="btn" href="/Frontend/Vistas/carrito.ejs">Ver carrito (<span id="cart-count">0</span>)</button>
+  </div>
+
+  <div class="catalogo">
+    <% productos.forEach(producto => { %>
+      <div class="producto-card">
+        <img src="<%= producto.imagen_url %>" alt="<%= producto.nombre %>" />
+        <h3><%= producto.nombre %></h3>
+        <p><%= producto.descripcion %></p>
+        <span>$<%= producto.precio %></span>
+        <button class="add-to-cart"
+        data-id="<%= producto.id_producto %>"
+        data-nombre="<%= producto.nombre %>"
+        data-precio="<%= producto.precio %>"
+        data-imagen="<%= producto.imagen_url %>">
+  Añadir al carrito
+</button>
+      </div>
+    <% }); %>
+  </div>
+
+<!-- Panel lateral del carrito -->
+<div id="cart-overlay" class="cart-overlay hidden"></div>
+
+<aside id="cart-sidebar" class="cart-sidebar hidden" aria-hidden="true">
+  <div class="cart-header">
+    <h2>Su carrito</h2>
+    <button id="close-cart" class="btn-close" aria-label="Cerrar carrito">×</button>
+  </div>
+
+  <div id="cart-items" class="cart-items">
+    <!-- Aquí JS añadirá los productos del carrito -->
+    <p class="empty">Su carrito está vacío.</p>
+  </div>
+
+  <div class="cart-footer">
+  <div class="cart-totals">
+    <div><span>Subtotal:</span> <strong id="cart-subtotal">$0.00</strong></div>
+    <div><span>Impuestos (19%):</span> <strong id="cart-tax">$0.00</strong></div>
+    <div><span>Total:</span> <strong id="cart-total">$0.00</strong></div>
+  </div>
+  <button id="checkout-btn" class="btn">Pagar</button>
+</div>
+</aside>
+
+<script src="../Publico/JS/carrito.js"></script>
+</body>
+</html>
