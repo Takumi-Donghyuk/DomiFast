@@ -28,7 +28,33 @@ async function login(req, res) {
     res.status(500).render('login', { error: 'Error en el servidor' });
   }
 }
+//register-----------------------
+async function register(req, res) {
+  const { nombre, usuario, email, telefono, password } = req.body;
+  try {
+    // Encriptar contraseña
+    const hash = await bcrypt.hash(password, 10);
+
+    // Guardar en BD
+    const nuevoUsuario = await modeloUsuario.crear({
+      nombre,
+      usuario,
+      correo: email,
+      telefono,
+      contrasena: hash,
+      id_rol: 2 // Por defecto cliente
+    });
+
+    res.status(201).json({ message: 'Usuario registrado con éxito', usuario: nuevoUsuario });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Error al registrar usuario' });
+  }
+}
+//-----------------------------
 
 module.exports = {
-  login
+  login,
+  register
+  //, register-------lo agregado
 };
