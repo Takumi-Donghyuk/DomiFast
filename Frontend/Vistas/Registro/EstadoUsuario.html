@@ -1,0 +1,39 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta de Pedido</title>
+  <link rel="stylesheet" href="../../Publico/CSS/Estilos.css">
+</head>
+
+<body>
+  <div class="consulta-container">
+    <h2>Consulta el Estado de tu Pedido</h2>
+    <input type="text" id="pedidoId" placeholder="Ingresa el número de pedido">
+    <button onclick="consultarPedido()">Consultar</button>
+
+    <div id="resultado" class="resultado"></div>
+  </div>
+
+  <script>
+    function consultarPedido() {
+      const pedidoId = document.getElementById("pedidoId").value.trim();
+      const resultado = document.getElementById("resultado");
+
+      if (!pedidoId) {
+        resultado.style.display = "block";
+        resultado.textContent = "⚠️ Ingresa un número de pedido válido.";
+        resultado.className = "resultado cancelado";
+        return;
+      }
+
+      // 🔹 Simulación de estado aleatorio (luego se conecta a backend/BD)
+      const estados = ["pendiente", "en-camino", "entregado", "cancelado"];
+      const estado = estados[Math.floor(Math.random() * estados.length)];
+
+      resultado.style.display = "block";
+      resultado.textContent = `El estado de tu pedido (${pedidoId}) es: ${estado}`;
+      resultado.className = "resultado " + estado;
+    }
+  </script>
+</body>
+</html>

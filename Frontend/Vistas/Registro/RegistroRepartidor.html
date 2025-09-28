@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Repartidor</title>
+  <link rel="stylesheet" href="../../Publico/CSS/Estilos.css">
+
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Registro de Repartidor</h1>
+    </div>
+
+    <!-- Paso 1: Formulario -->
+    <form id="registroForm">
+      <input type="text" placeholder="Nombre" required>
+      <input type="text" placeholder="Apellido" required>
+      <input type="email" placeholder="Correo" required>
+      <input type="text" placeholder="Cédula" required>
+      <input type="tel" placeholder="Teléfono" required>
+      <input type="submit" class="btn" value="Continuar">
+    </form>
+
+    <!-- Paso 2: Selector de zona -->
+    <div id="zonaSelector" style="display:none;">
+      <h2>Selecciona la zona donde trabajará el repartidor</h2>
+      <select id="zona">
+        <option value="">-- Selecciona una zona --</option>
+        <option value="norte">Zona Norte</option>
+        <option value="centro">Zona Centro</option>
+        <option value="sur">Zona Sur</option>
+      </select>
+      <button class="btn" onclick="mostrarMapa()">Ver zona</button>
+    </div>
+
+    <!-- Paso 3: Mapas -->
+    <div id="mapaContainer" style="display:none;">
+      <div id="mapa-norte" class="mapa-zona">
+        <h2>Zona Norte</h2>
+        <p>Desde Manablanca hasta Cartagenita. Incluye zonas industriales y acceso por la vía Bogotá.</p>
+        <iframe class="mapa" src="https://www.google.com/maps/embed?pb=..." allowfullscreen="" loading="lazy"></iframe>
+      </div>
+
+      <div id="mapa-centro" class="mapa-zona">
+        <h2>Zona Centro</h2>
+        <p>Desde el Parque Principal hasta el Hospital San Rafael. Incluye el centro histórico y zonas comerciales.</p>
+        <iframe class="mapa" src="https://www.google.com/maps/embed?pb=..." allowfullscreen="" loading="lazy"></iframe>
+      </div>
+
+      <div id="mapa-sur" class="mapa-zona">
+        <h2>Zona Sur</h2>
+        <p>Desde El Rosal hasta la vereda Moyano. Incluye zonas rurales y acceso por la vía Albán.</p>
+        <iframe class="mapa" src="https://www.google.com/maps/embed?pb=..." allowfullscreen="" loading="lazy"></iframe>
+      </div>
+
+      <div id="finalizarRegistro">
+        <button class="btn" onclick="confirmarRegistro()">Enviar registro</button>
+      </div>
+    </div>
+
+    <!-- Paso 4: Mensaje de éxito -->
+    <div id="mensajeExito" style="display:none; text-align:center; padding:20px;">
+      <h2 style="color:green;">✅ ¡Registro exitoso!</h2>
+      <p>Gracias por registrarte como repartidor en Facatativá.</p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("registroForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      this.style.display = "none";
+      document.getElementById("zonaSelector").style.display = "block";
+    });
+
+    function mostrarMapa() {
+      const zona = document.getElementById("zona").value;
+      if (!zona) {
+        alert("Por favor selecciona una zona.");
+        return;
+      }
+
+      document.querySelectorAll(".mapa-zona").forEach(div => {
+        div.style.display = "none";
+        div.classList.remove("sombreado");
+      });
+
+      const zonaDiv = document.getElementById("mapa-" + zona);
+      zonaDiv.style.display = "block";
+      zonaDiv.classList.add("sombreado");
+
+      document.getElementById("mapaContainer").style.display = "block";
+    }
+
+    function confirmarRegistro() {
+      document.getElementById("zonaSelector").style.display = "none";
+      document.getElementById("mapaContainer").style.display = "none";
+      document.getElementById("mensajeExito").style.display = "block";
+    }
+  </script>
+</body>
+</html>

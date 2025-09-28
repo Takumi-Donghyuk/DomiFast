@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actualizar Estado del Pedido</title>
+  <link rel="stylesheet" href="../../Publico/CSS/Estilos.css">
+
+
+</head>
+<body>
+  <div class="consulta-container">
+    <h2>Actualizar Estado del Pedido</h2>
+
+    <!-- Número de pedido -->
+    <input type="text" id="pedidoId" placeholder="Número de pedido">
+
+    <!-- Selector de estado -->
+    <select id="nuevoEstado">
+      <option value="">Selecciona estado...</option>
+      <option value="aceptado">Aceptado</option>
+      <option value="recogido">Recogido</option>
+      <option value="entregado">Entregado</option>
+    </select>
+
+    <!-- Botón -->
+    <button onclick="actualizarPedido()">Actualizar Estado</button>
+
+    <!-- Mensaje de resultado -->
+    <div id="mensaje" class="resultado"></div>
+  </div>
+
+  <script>
+    function actualizarPedido() {
+      const pedidoId = document.getElementById("pedidoId").value.trim();
+      const nuevoEstado = document.getElementById("nuevoEstado").value;
+      const mensaje = document.getElementById("mensaje");
+
+      if (!pedidoId || !nuevoEstado) {
+        mensaje.style.display = "block";
+        mensaje.textContent = "⚠️ Ingresa número de pedido y selecciona estado.";
+        mensaje.className = "resultado cancelado";
+        return;
+      }
+
+      // 🔹 Aquí en el futuro se conecta al backend para guardar el cambio en la BD
+      mensaje.style.display = "block";
+      mensaje.textContent = `✅ Pedido ${pedidoId} actualizado a: ${nuevoEstado.toUpperCase()}`;
+      mensaje.className = "resultado entregado"; // color verde para confirmar
+    }
+  </script>
+</body>
+</html>
