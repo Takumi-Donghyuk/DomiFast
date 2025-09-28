@@ -62,6 +62,10 @@ function authRol(rolPermitido) {
 // Rutas generales
 app.get('/', (req,res) => res.render('index'));
 app.use('/login', rutasAutenticacion);
+//register----------------------------API
+app.use('/api', rutasAutenticacion);
+//----------------------------
+
 // Rutas protegidas
 app.use('/admin', authMiddleware, authRol(1), rutasAdministrador);
 app.use('/cliente', authMiddleware, authRol(2), rutasCliente);
@@ -71,6 +75,3 @@ app.use('/catalogo', authMiddleware, authRol(2), rutasProductos)
 app.listen(PORT, ()=>{
     console.log(`Servidor escuchando http://localhost:${PORT}`);
 })
-
-
-
