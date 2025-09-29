@@ -30,21 +30,21 @@ async function login(req, res) {
 }
 //register-----------------------
 async function register(req, res) {
-  const { nombre, usuario, email, telefono, password } = req.body;
-  try {
-    // Encriptar contraseña
-    const hash = await bcrypt.hash(password, 10);
+    const { nombre, usuario, correo, telefono, contrasena } = req.body;
 
-    // Guardar en BD
+  try {
+    //Encritar contraseña
+    const hash = await bcrypt.hash(contrasena, 10);
+
     const nuevoUsuario = await modeloUsuario.crear({
       nombre,
       usuario,
-      correo: email,
+      correo,
       telefono,
       contrasena: hash,
-      id_rol: 2 // Por defecto cliente
+      id_rol: 2 // cliente por defecto
     });
-
+//guardar BDD
     res.status(201).json({ message: 'Usuario registrado con éxito', usuario: nuevoUsuario });
   } catch (err) {
     console.error(err);
