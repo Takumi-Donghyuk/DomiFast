@@ -63,7 +63,7 @@ function authRol(rolPermitido) {
 app.get('/', (req,res) => res.render('index'));
 app.use('/login', rutasAutenticacion);
 //register----------------------------API
-app.use('/api', rutasAutenticacion);
+app.use('/api/auth', rutasAutenticacion);
 //----------------------------
 
 // Rutas protegidas
