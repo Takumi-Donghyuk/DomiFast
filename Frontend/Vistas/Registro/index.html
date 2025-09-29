@@ -81,14 +81,14 @@
         delete data.confirm_contrasena;
 
         try {
-            // Enviar datos al servidor
-            const response = await fetch('/api/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
-            });
+        // ✅ CAMBIO: nueva ruta de API
+        const response = await fetch('/api/auth/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
 
             const result = await response.json();
 
@@ -111,5 +111,6 @@
     </script>
 </body>
 </html>
+
 
 
