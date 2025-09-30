@@ -29,7 +29,7 @@ async function login(req, res) {
   }
 }
 //register-----------------------
-async function register(req, res) {
+/*async function register(req, res) {
     const { nombre, usuario, correo, telefono, contrasena } = req.body;
 
   try {
@@ -50,11 +50,11 @@ async function register(req, res) {
     console.error(err);
     res.status(500).json({ message: 'Error al registrar usuario' });
   }
-}
+}*/
 //-----------------------------
 
 module.exports = {
-  login,
-  register
+  login/*,
+  register*/
   //, register-------lo agregado
 };
