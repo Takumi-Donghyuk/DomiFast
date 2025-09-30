@@ -7,7 +7,7 @@ router.get('/', (req, res)=> res.render('login'));
 //login
 router.post('/', controladorAutenticacion.login);
 //registro---------
-router.post('/register', controladorAutenticacion.register);
+//router.post('/register', controladorAutenticacion.register);
 //-------------
 //logout
 router.get('/logout', (req, res) => {
